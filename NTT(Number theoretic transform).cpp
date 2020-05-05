@@ -18,7 +18,7 @@ void debug(Head H, Tail... T) {cerr << H << " "; debug(T...);}
 #define debug(...) debug(__VA_ARGS__);
 const ll maxn = 1<<18;
 constexpr ll mod=163577857;
-constexpr ll g=23;
+const ll g=23;
 ll invfact[maxn],fact[maxn];
 ll gpow[30], invgpow[30];
 inline ll mul(ll x,ll y)
