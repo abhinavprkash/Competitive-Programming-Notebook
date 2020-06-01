@@ -14,7 +14,7 @@ ___
 * [ ] Matroid Intersection
 * [ ] Splay Trees
 * [ ] AVL Trees
-* [ ] Markov Chains
+* [x] Markov Chains
 * [ ] Bridges Query Online
 * [ ] Voronoi Diagrams
 * [ ] Tries
