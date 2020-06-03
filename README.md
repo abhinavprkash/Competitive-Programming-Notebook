@@ -14,7 +14,6 @@ ___
 * [ ] Matroid Intersection
 * [ ] Splay Trees
 * [ ] AVL Trees
-* [x] Markov Chains
 * [ ] Bridges Query Online
 * [ ] Voronoi Diagrams
 * [ ] Tries
@@ -23,6 +22,8 @@ ___
 * [ ] Sweep Line Intersection
 * [ ] Digit DP
 * [ ] Linear Programming
+* [x] Aho Corasick
+* [x] Markov Chains
 * [x] Heavy Light Decomposition
 * [x] 2-SAT
 * [x] Articulation Point and Bridges offline
