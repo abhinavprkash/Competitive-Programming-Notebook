@@ -22,6 +22,8 @@ ___
 * [ ] Sweep Line Intersection
 * [ ] Digit DP
 * [ ] Linear Programming
+* [x] 0-1 BFS
+* [x] Floyd-Warshall
 * [x] Aho Corasick
 * [x] Markov Chains
 * [x] Heavy Light Decomposition
