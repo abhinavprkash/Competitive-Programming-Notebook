@@ -8,6 +8,8 @@ The following blogs and wesites are reffered in most of the files:
 * <a href="https://codeforces.com/blog/entry/57282" target="_blank" style="text-decoration:none;">All the good tutorials found for Competitive Programming </a> 
 * <a href="https://codeforces.com/blog/entry/13529" target="_blank" style="text-decoration:none;">Good Blog Post Resources about Algorithm and Data Structures</a>
 * <a href="http://wcipeg.com/wiki/Special:AllPages" target="_blank" style="text-decoration:none;">Programming Enrichment Group Webiste</a>
+* <a href="http://www.csie.ntnu.edu.tw/~u91029/" target="_blank" style="text-decoration:none;">Famous Taiwanese Competitive Programming Website</a>
+
 ___
 ### CHECK LIST
 * [ ] Lazy propagation (Easy Way)
@@ -22,6 +24,8 @@ ___
 * [ ] Sweep Line Intersection
 * [ ] Digit DP
 * [ ] Linear Programming
+* [x] Bipartite Checking
+* [x] Max-Flow Min-Cut Ford-Fulkerson(Edmonds Karp Implementation)
 * [x] 0-1 BFS
 * [x] Floyd-Warshall
 * [x] Aho Corasick
