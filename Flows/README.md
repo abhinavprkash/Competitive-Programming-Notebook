@@ -5,3 +5,4 @@
 |Ford-Fulkerson|O(E * Maximum Capacity)|
 |Ford-Fulkerson (Edmonds Karp implementation)|O(VE<sup>2</sup>)|
 |Push-Relabel|O(V<sup>2</sup>E)|
+|Push-Relabel Improved|O(V<sup>3</sup>)|
