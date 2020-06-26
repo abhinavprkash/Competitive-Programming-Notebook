@@ -12,18 +12,18 @@ The following blogs and wesites are reffered in most of the files:
 
 ___
 ### CHECK LIST
-* [ ] Lazy propagation (Easy Way)
 * [ ] Matroid Intersection
 * [ ] Splay Trees
 * [ ] AVL Trees
 * [ ] Bridges Query Online
 * [ ] Voronoi Diagrams
-* [ ] Tries
 * [ ] Treap
 * [ ] Topological Sort
 * [ ] Sweep Line Intersection
 * [ ] Digit DP
 * [ ] Linear Programming
+* [x] Tries
+* [x] Hopcroft Karp for maximum bipartite matching
 * [x] Bipartite Checking
 * [x] Max-Flow Min-Cut Ford-Fulkerson(Edmonds Karp Implementation)
 * [x] 0-1 BFS
