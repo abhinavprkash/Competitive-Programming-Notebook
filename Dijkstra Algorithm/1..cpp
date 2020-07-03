@@ -27,7 +27,7 @@ int32_t main()
     for(int i = 1; i <= n; i++)
         d[i] = inf;
     d[1] = 0ll;
-    set<pair<ll, int> >p; //Use set as priority queue may be slow
+    set<pair<ll, int> >p;
     p.insert(make_pair(0ll, 1));
     while(!p.empty())
     {
