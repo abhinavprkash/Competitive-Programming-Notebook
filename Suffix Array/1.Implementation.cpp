@@ -1,81 +1,79 @@
-class Solution
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+// Build Suffix Array in O(nlogn)
+namespace suffixArray
 {
-public:
-    vector<int> sort_cyclic_shifts(string const &s)
+    string s;
+    int n;
+    vector<int>sa, c;
+    void counting_sort(vector<int> &sa, vector<int> &c)
     {
-        int n = s.size();
-        const int alphabet_size = 256;
-        vector<int>order(n), equivalence_class(n); //p[](permutaion or order) and c[] (equivalence classes)
-
-        //Counting Sort for Length=1
-        vector<int>cnt(max(alphabet_size, n), 0);
-        for(int i = 0; i < n; i++)
-        {
-            cnt[(s[i])]++;
-        }
-        for(int i = 1; i < alphabet_size; i++)
-            cnt[i] += cnt[i - 1];
-        for(int i = n - 1; i >= 0; i--)
-        {
-            order[--cnt[(s[i])]] = i;
-        }
-        // Get grouping in equivalence_class array
-        int c = 0;
-        equivalence_class[order[0]] = 0;
+        vector<int>cnt(n, 0);
+        for(int x : c)
+            cnt[x]++;
+        vector<int>p_new(n), pos(n);
+        pos[0] = 0;
         for(int i = 1; i < n; i++)
         {
-            if(s[order[i]] != s[order[i - 1]])
-                c++;
-            equivalence_class[order[i]] = c;
+            pos[i] = pos[i - 1] + cnt[i - 1];
         }
-
-        //
-        vector<int>ordern(n), equivalence_classn(n);
-        for(int len = 1; len < n; len <<= 1)
+        for(int x : sa)
         {
-            for(int i = 0; i < n; i++)
-            {
-                ordern[i] = order[i] - len; //Shift p[i] to counter_clockwise by len
-                if(ordern[i] < 0)
-                    ordern[i] += n;
-            }
-            /*
-            Now as order was sorted, our new array ordern is sorted by second element.
-            As we also added (len) anticlockwise alphabets of the string.
-            */
-
-            fill(cnt.begin(), cnt.begin() + c + 1, 0);
-
-            // Count Sort for all lengths now
-            for(int i = 0; i < n; i++)
-                cnt[equivalence_class[ordern[i]]]++;
-            for(int i = 1; i <= c; i++)
-            {
-                cnt[i] += cnt[i - 1];
-            }
-            for(int i = n - 1; i >= 0; i--)
-            {
-                order[--cnt[equivalence_class[ordern[i]]]] = ordern[i];
-            }
-            equivalence_classn[order[0]] = 0;
-            c = 0;
-            for(int i = 1; i < n; i++)
-            {
-                pair<int, int>cur = {equivalence_class[order[i]], equivalence_class[(order[i] + len) % n]};
-                pair<int, int>prev = {equivalence_class[order[i - 1]], equivalence_class[(order[i - 1] + len) % n]};
-                if(cur != prev)
-                    c++;
-                equivalence_classn[order[i]] = c;
-            }
-            equivalence_class.swap(equivalence_classn);
+            int i = c[x];
+            p_new[pos[i]] = x;
+            pos[i]++;
         }
-        return order;
+        sa = p_new;
     }
-    string lastSubstring(string s)
+    void run_phases()
     {
-        string t = s + "$";
-        vector<int>sa(sort_cyclic_shifts(t));
-        return s.substr(sa[sa.size() - 1]);
+        vector<pair<char, int>>a(n);
+        for(int i = 0; i < n; i++)
+            a[i] = {s[i], i};
+        sort(begin(a), end(a));
+        for (int i = 0; i < n; ++i)
+            sa[i] = a[i].second;
+        c[sa[0]] = 0;
+        for(int i = 1; i < n; i++)
+            c[sa[i]] = c[sa[i - 1]] + (s[sa[i]] == s[sa[i - 1]] ? 0 : 1);
+        for(int len = 0; (1 << len) < n; len++)
+        {
+            for (int i = 0; i < n; ++i)
+                sa[i] = (sa[i] - (1 << len) + n) % n;
+            counting_sort(sa, c);
+            vector<int>c_new(n);
+            c_new[sa[0]] = 0;
+            for (int i = 1; i < n; ++i)
+            {
+                pair<int, int>prev = {c[sa[i - 1]], c[(sa[i - 1] + (1 << len)) % n]};
+                pair<int, int>now = {c[sa[i]], c[(sa[i] + (1 << len)) % n]};
+                if(now == prev)
+                    c_new[sa[i]] = c_new[sa[i - 1]];
+                else
+                    c_new[sa[i]] = c_new[sa[i - 1]] + 1;
+            }
+            c = c_new;
+        }
+    }
+    void build(const string &_s)
+    {
+        s = _s;
+        s += "$";
+        n = s.size();
+        sa.resize(n), c.resize(n);
+        run_phases();
     }
 };
-// https://leetcode.com/problems/last-substring-in-lexicographical-order
+using namespace suffixArray;
+int32_t main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    string s;
+    cin >> s;
+    build(s);
+    for(int x : sa)
+        cout << x << ' ';
+    return 0;
+}
