@@ -119,6 +119,110 @@ struct segtree
     {
         modify(0, 0, n - 1, l, r, v);
     }
+    // Find first element where condition is true.
+    int find_first_knowingly(int x, int l, int r, const function<bool(const node &)> &f)
+    {
+        if (l == r)
+        {
+            return l;
+        }
+        push(x, l, r);
+        int m = (l + r) >> 1;
+        int y = x + ((m - l + 1) << 1);
+        int res;
+        if (f(tree[x + 1]))
+        {
+            res = find_first_knowingly(x + 1, l, m, f);
+        }
+        else
+        {
+            res = find_first_knowingly(y, m + 1, r, f);
+        }
+        pull(x, y);
+        return res;
+    }
+    int find_first(int x, int l, int r, int ql, int qr, const function<bool(const node &)> &f)
+    {
+        if (ql <= l && r <= qr)
+        {
+            if (!f(tree[x]))
+            {
+                return -1;
+            }
+            return find_first_knowingly(x, l, r, f);
+        }
+        push(x, l, r);
+        int m = (l + r) >> 1;
+        int y = x + ((m - l + 1) << 1);
+        int res = -1;
+        if (ql <= m)
+        {
+            res = find_first(x + 1, l, m, ql, qr, f);
+        }
+        if (qr > m && res == -1)
+        {
+            res = find_first(y, m + 1, r, ql, qr, f);
+        }
+        pull(x, y);
+        return res;
+    }
+//  Find last element where condition is true.
+    int find_last_knowingly(int x, int l, int r, const function<bool(const node &)> &f)
+    {
+        if (l == r)
+        {
+            return l;
+        }
+        push(x, l, r);
+        int m = (l + r) >> 1;
+        int y = x + ((m - l + 1) << 1);
+        int res;
+        if (f(tree[y]))
+        {
+            res = find_last_knowingly(y, m + 1, r, f);
+        }
+        else
+        {
+            res = find_last_knowingly(x + 1, l, m, f);
+        }
+        pull(x, y);
+        return res;
+    }
+    int find_last(int x, int l, int r, int ql, int qr, const function<bool(const node &)> &f)
+    {
+        if (ql <= l && r <= qr)
+        {
+            if (!f(tree[x]))
+            {
+                return -1;
+            }
+            return find_last_knowingly(x, l, r, f);
+        }
+        push(x, l, r);
+        int m = (l + r) >> 1;
+        int y = x + ((m - l + 1) << 1);
+        int res = -1;
+        if (qr > m)
+        {
+            res = find_last(y, m + 1, r, ql, qr, f);
+        }
+        if (ql <= m && res == -1)
+        {
+            res = find_last(x + 1, l, m, ql, qr, f);
+        }
+        pull(x, y);
+        return res;
+    }
+    int find_first(int ql, int qr, const function<bool(const node &)> &f)
+    {
+        assert(0 <= ql && ql <= qr && qr <= n - 1);
+        return find_first(0, 0, n - 1, ql, qr, f);
+    }
+    int find_last(int ql, int qr, const function<bool(const node &)> &f)
+    {
+        assert(0 <= ql && ql <= qr && qr <= n - 1);
+        return find_last(0, 0, n - 1, ql, qr, f);
+    }
 };
 int32_t main()
 {
