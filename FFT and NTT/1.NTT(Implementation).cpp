@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
-constexpr ll mod=(119<<23)+1;//998244353
+const int mod = (119 << 23) + 1;//998244353
 inline void add(int &x, int y)
 {
     x += y;
@@ -63,11 +63,22 @@ inline int inv(int a)
 
 namespace ntt
 {
+    // nbase is needed base
+    // {current limit is 1<<base,primitive root,mod=c*pow(2,max_base)+1}
+    // Therefore nbase<=base<=max_base must hold at all times
     int base = 1, root = -1, max_base = -1;
+    // {rev is for inplace computation,roots are roots of unity under modulo m}
+    // roots are started utilizing from index 1 hence first element is zero
+    // roots are {1,w,w*2,...,w^(n-1)}
     vector<int> rev = {0, 1}, roots = {0, 1};
 
     void init()
     {
+        /*
+        We use the fact that for modules of the form p=c(2^k)+1 (and p is prime),
+        there always exists the 2^k-th root of unity. It can be shown that g^c
+        is such a 2^k-th root of unity, where g is a primitive root of p.
+        */
         int temp = mod - 1;
         max_base = 0;
         while (temp % 2 == 0)
@@ -75,7 +86,8 @@ namespace ntt
             temp >>= 1;
             ++max_base;
         }
-        root = 2;
+        // mod=(temp<<max_base+1);
+        root = 2; // Primitive Root
         while (true)
         {
             if (power(root, 1 << max_base) == 1 && power(root, 1 << max_base - 1) != 1)
@@ -114,11 +126,11 @@ namespace ntt
             ++base;
         }
     }
-
     void dft(vector<int> &a)
     {
-        int n = a.size(), zeros = __builtin_ctz(n);
-        ensure_base(zeros);
+        int n = a.size();
+        int zeros = __builtin_ctz(n); //log2(n)
+        ensure_base(zeros);// ensure that size of array should be less than equal to 1<<max_base
         int shift = base - zeros;
         for (int i = 0; i < n; ++i)
         {
@@ -321,7 +333,7 @@ vector<int> operator % (const vector<int> &a, const vector<int> &b)
     vector<int> c = a;
     return c %= b;
 }
-
+// Derivative of f(x)->(n-1) terms
 vector<int> derivative(const vector<int> &a)
 {
     int n = a.size();
@@ -332,8 +344,8 @@ vector<int> derivative(const vector<int> &a)
     }
     return b;
 }
-
-vector<int> primitive(const vector<int> &a)
+// Integration of f(x)=g(x) such that g(0)=0->(n+1) terms
+vector<int> integration(const vector<int> &a)
 {
     int n = a.size();
     vector<int> b(n + 1), invs(n + 1);
@@ -347,7 +359,7 @@ vector<int> primitive(const vector<int> &a)
 
 vector<int> logarithm(const vector<int> &a)
 {
-    vector<int> b = primitive(derivative(a) * inverse(a));
+    vector<int> b = integration(derivative(a) * inverse(a));
     b.resize(a.size());
     return b;
 }
@@ -507,11 +519,11 @@ vector<int> interpolate(const vector<int> &x, const vector<int> &y)
 }
 int main()
 {
-	// Usage cases
-	vector<int>a{1,2,3,4};
-	vector<int>b{2,3};
-	vector<int>c=multiply(a,b);
-	vector<vector<int>>d{{1,2,3},{2,3},{5,6,7}};
-	vector<int>e=multiply_all(0,2,d);
-	return 0;
+    // Usage cases
+    vector<int>a{1, 2, 3, 4};
+    vector<int>b{2, 3};
+    vector<int>c = multiply(a, b);
+    vector<vector<int>>d{{1, 2, 3}, {2, 3}, {5, 6, 7}};
+    vector<int>e = multiply_all(0, 2, d);
+    return 0;
 }
