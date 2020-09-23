@@ -63,5 +63,4 @@ int32_t main()
     }
     return 0;
 }
-//https://codeforces.com/contest/432/submission/79401535
 //https://codeforces.com/contest/432/problem/D

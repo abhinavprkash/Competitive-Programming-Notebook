@@ -132,4 +132,3 @@ int32_t main()
     return 0;
 }
 // https://codeforces.com/contest/701/problem/F
-// https://codeforces.com/contest/701/submission/80751500

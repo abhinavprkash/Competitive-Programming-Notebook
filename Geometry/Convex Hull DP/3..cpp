@@ -53,4 +53,3 @@ int32_t main()
     cout << dp[n - 1];
 }
 // https://codeforces.com/contest/319/problem/C
-// https://codeforces.com/contest/319/submission/84068162

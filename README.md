@@ -1,25 +1,17 @@
 # Competitive Programming Tricks and Implementations
 
-This repository is for implementing often used data structures and algorithms easily and efficiently used in competitive programming mind sport.
-
-The following blogs and wesites are reffered in most of the files:
-
-* <a href="https://cp-algorithms.com" target="_blank" style="text-decoration:none;"> Competitve Programming Algorithms</a>
-* <a href="https://codeforces.com/blog/entry/57282" target="_blank" style="text-decoration:none;">All the good tutorials found for Competitive Programming </a> 
-* <a href="https://codeforces.com/blog/entry/13529" target="_blank" style="text-decoration:none;">Good Blog Post Resources about Algorithm and Data Structures</a>
-* <a href="http://wcipeg.com/wiki/Special:AllPages" target="_blank" style="text-decoration:none;">Programming Enrichment Group Webiste</a>
-* <a href="http://web.ntnu.edu.tw/~algo" target="_blank" style="text-decoration:none;">Taiwanese Competitive Programming Website</a>
-
+This repository is for maintaining often used data structures and algorithms easily and efficiently used in competitive programming.
 ___
 ### CHECK LIST
 * [ ] Matroid Intersection
-* [ ] Splay Trees
 * [ ] AVL Trees
 * [ ] Bridges Query Online
 * [ ] Voronoi Diagrams
 * [ ] Sweep Line Intersection
 * [ ] Digit DP
 * [ ] Linear Programming
+* [x] Link Cut Trees
+* [x] Splay Trees
 * [x] Treap
 * [x] Tries
 * [x] Hopcroft Karp for maximum bipartite matching

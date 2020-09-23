@@ -88,4 +88,4 @@ int32_t main()
         cout << res[i] << '\n';
     return 0;
 }
-// https://www.codechef.com/viewsolution/37395980
+// https://www.codechef.com/problems/DRAGONS/

@@ -65,5 +65,4 @@ int32_t main()
     }
     return 0;
 }
-// https://www.codechef.com/viewsolution/32978081
 // https://www.codechef.com/problems/ZOMCAV

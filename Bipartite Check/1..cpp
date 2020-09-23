@@ -98,5 +98,4 @@ int32_t main()
     cout << "YES\n";
     cout << ans;
 }
-// https://codeforces.com/contest/1144/submission/84163978
 // https://codeforces.com/contest/1144/problem/F

@@ -145,4 +145,3 @@ int32_t main()
     return 0;
 }
 // https://codeforces.com/contest/22/problem/E
-// https://codeforces.com/contest/22/submission/80996086

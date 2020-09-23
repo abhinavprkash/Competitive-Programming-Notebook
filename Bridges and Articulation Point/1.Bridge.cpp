@@ -101,5 +101,4 @@ int32_t main()
     cout << ((n_ - p) % mod * moduloInverse(n_)) % mod;
     return 0;
 }
-// https://www.hackerearth.com/submission/39151997
 // https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/delete-and-cut-game-91969de1

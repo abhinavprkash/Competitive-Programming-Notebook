@@ -40,4 +40,3 @@ int32_t main()
     return 0;
 }
 // https://codeforces.com/contest/295/problem/B
-// https://codeforces.com/contest/295/submission/83812518

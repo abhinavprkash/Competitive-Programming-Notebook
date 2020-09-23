@@ -14,7 +14,6 @@ void add(int idx, int val)
 }
 int binary_lifting(int x)
 {
-    // Awesome blog for understanding in one go
     // https://codeforces.com/blog/entry/61364
     // If lets say we can take 2^i but not 2^(i+1) then we
     // just keep adding lower bits to get the exact element in betweeen.
@@ -73,5 +72,4 @@ int32_t main()
     }
     return 0;
 }
-// https://codeforces.com/contest/1354/submission/80607201
 // https://codeforces.com/contest/1354/problem/D

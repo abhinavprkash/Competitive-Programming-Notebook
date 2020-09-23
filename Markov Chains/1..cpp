@@ -77,4 +77,3 @@ int32_t main()
     return 0;
 }
 // https://www.codechef.com/problems/STIMEMCH
-// https://www.codechef.com/viewsolution/33534988

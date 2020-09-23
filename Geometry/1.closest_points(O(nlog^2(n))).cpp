@@ -77,5 +77,4 @@ int32_t main()
     }
     return 0;
 }
-https://codeforces.com/contest/429/problem/D
-https://codeforces.com/contest/429/submission/79362557
+// https://codeforces.com/contest/429/problem/D
